@@ -33,13 +33,14 @@ private extension CameraView {
             .onImageCaptured(onImageCaptured)
             .onVideoCaptured(onVideoCaptured)
             .afterMediaCaptured(afterMediaCaptured)
+            .changeCameraFilters([.init(name: "CISepiaTone")!])
             .onCloseController(onCloseController)
     }
 }
 
 // MARK: - Camera Actions
 private extension CameraView {
-    func onImageCaptured(_ imageData: Data) {
+    func onImageCaptured(_ imageData: UIImage) {
         print("IMAGE CAPTURED")
     }
     func onVideoCaptured(_ videURL: URL) {
