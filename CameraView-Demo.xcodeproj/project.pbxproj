@@ -310,6 +310,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera DEMO description <on error screen we take the description from info.plist file>";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone DEMO description <on error screen we take the description from info.plist file>";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = DEMO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -350,6 +351,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera DEMO description <on error screen we take the description from info.plist file>";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone DEMO description <on error screen we take the description from info.plist file>";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = DEMO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

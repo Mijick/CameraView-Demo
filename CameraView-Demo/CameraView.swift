@@ -13,12 +13,17 @@ import SwiftUI
 import MijickCameraView
 
 struct CameraView: View {
+    @ObservedObject private var manager: CameraManager = .init(outputType: .photo, cameraFilters: [.init(name: "CISepiaTone")!], focusImageSize: 300)
     @State private var isPopupPresented: Bool = false
 
 
     var body: some View {
-        createClickMeButton()
-            .fullScreenCover(isPresented: $isPopupPresented, content: createCameraController)
+        createCameraController()
+            .onTapGesture {
+                isPopupPresented = true
+            }
+            .alert("ALERT", isPresented: $isPopupPresented, actions: {})
+            //.fullScreenCover(isPresented: $isPopupPresented, content: createCameraController)
     }
 }
 private extension CameraView {
@@ -28,12 +33,11 @@ private extension CameraView {
         }
     }
     func createCameraController() -> some View {
-        MCameraController()
-            .lockOrientation(AppDelegate.self)
+        MCameraController(manager: manager)
+            //.lockOrientation(AppDelegate.self)
             .onImageCaptured(onImageCaptured)
             .onVideoCaptured(onVideoCaptured)
             .afterMediaCaptured(afterMediaCaptured)
-            .changeCameraFilters([.init(name: "CISepiaTone")!])
             .onCloseController(onCloseController)
     }
 }
