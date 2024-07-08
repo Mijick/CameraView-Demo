@@ -405,7 +405,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mijick/CameraView";
 			requirement = {
-				branch = main;
+				branch = "patch-1.2.1-beta";
 				kind = branch;
 			};
 		};
