@@ -13,6 +13,17 @@ import SwiftUI
 import MijickCameraView
 
 struct CameraView: View {
+    @ObservedObject private var manager: CameraManager = .init(
+        outputType: .photo,
+        cameraPosition: .back,
+        cameraFilters: [.init(name: "CISepiaTone")!],
+        resolution: .hd4K3840x2160,
+        frameRate: 25,
+        flashMode: .off,
+        isGridVisible: true,
+        focusImageColor: .yellow,
+        focusImageSize: 92
+    )
     @State private var isPopupPresented: Bool = false
 
 
@@ -28,12 +39,14 @@ private extension CameraView {
         }
     }
     func createCameraController() -> some View {
-        MCameraController()
-            .lockOrientation(AppDelegate.self)
+        MCameraController(manager: manager)
+            //.lockOrientation(AppDelegate.self)
             .onImageCaptured(onImageCaptured)
             .onVideoCaptured(onVideoCaptured)
-            .afterMediaCaptured(afterMediaCaptured)
-            .changeCameraFilters([.init(name: "CISepiaTone")!])
+            .afterMediaCaptured { $0
+                .returnToCameraView(true)
+                .custom { print("Media object has been successfully captured") }
+            }
             .onCloseController(onCloseController)
     }
 }
